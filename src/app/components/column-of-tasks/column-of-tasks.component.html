@@ -8,12 +8,12 @@
         <p>{{taskCardsToDo.length}}</p>
         <button (click)="createTaskCardInToDo()" ><fa-icon [icon]="addTaskCard"></fa-icon></button>
     </div>
-    <div class="tasks example-list" 
+    <div class="tasks" 
     cdkDropList
     [cdkDropListData]="taskCardsToDo"
     
     >
-        <app-task-card class="example-box" [taskCards]="taskCardsToDo" *ngFor="let card of taskCardsToDo; let idx = index"
+        <app-task-card [taskCards]="taskCardsToDo" *ngFor="let card of taskCardsToDo; let idx = index"
         [index]="idx"
         
         > </app-task-card>
@@ -29,11 +29,11 @@
         <p>{{taskCardsInProgress.length}}</p>
         <button (click)="createTaskCardInProgress()" ><fa-icon [icon]="addTaskCard"></fa-icon></button>
     </div>
-    <div class="tasks example-list"
+    <div class="tasks"
     cdkDropList
     [cdkDropListData]="taskCardsInProgress"
     >
-        <app-task-card class="example-box" [taskCards]="taskCardsInProgress" *ngFor="let card of taskCardsInProgress; let idx = index"
+        <app-task-card [taskCards]="taskCardsInProgress" *ngFor="let card of taskCardsInProgress; let idx = index"
         [index]="idx"
         
         > </app-task-card>
@@ -50,11 +50,11 @@
         <p>{{taskCardsInReady.length}}</p>
         <button (click)="createTaskCardInReady()" ><fa-icon [icon]="addTaskCard"></fa-icon></button>
     </div>
-    <div class="tasks example-list"
+    <div class="tasks"
     cdkDropList
     [cdkDropListData]="taskCardsInReady"
     >
-        <app-task-card class="example-box" [taskCards]="taskCardsInReady" *ngFor="let card of taskCardsInReady; let idx = index"
+        <app-task-card [taskCards]="taskCardsInReady" *ngFor="let card of taskCardsInReady; let idx = index"
         [index]="idx"
         
         > </app-task-card>
@@ -72,7 +72,7 @@
       [cdkDropListData]="todo"
       class="example-list"
       (cdkDropListDropped)="drop($event)"  >
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+      <div *ngFor="let item of todo" cdkDrag>{{item}}</div>
     </div>
   </div>
 
@@ -84,7 +84,7 @@
       [cdkDropListData]="done"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+      <div *ngFor="let item of done" cdkDrag>{{item}}</div>
     </div>
   </div>
 </div>
