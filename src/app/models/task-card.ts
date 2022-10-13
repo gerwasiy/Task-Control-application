@@ -1,4 +1,4 @@
-export interface taskCard{
+export interface TaskCardModel{
    title:string
    description:string
    creationData:Date
