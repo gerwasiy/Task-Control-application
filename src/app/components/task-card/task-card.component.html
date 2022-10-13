@@ -1,0 +1,25 @@
+<div *ngIf="toggle; else editTaskCard" class="task-card">
+    <div class="card-info">
+        <h3 class="card-title"> <span class="index">#{{index}}</span>  {{taskCards[index].title}} </h3>
+        <p class="card-description">{{taskCards[index].description}} </p>
+        <span #inputDate  class="card-creation-date">{{taskCards[index].creationData | date:'medium'}}</span>
+    </div>
+    <aside>
+        <button (click)="toggleTaskCard()">
+            <fa-icon [icon]="editBtn"></fa-icon>
+        </button>
+        <button>
+            <fa-icon (click)="deleteTaskCard()" [icon]="deleteBtn"></fa-icon>
+        </button>
+    </aside>
+
+</div>
+<ng-template #editTaskCard>
+    <div class="task-card-editor">
+        <input [(ngModel)]="taskCards[index].title" type="text"/>
+        <textarea [(ngModel)]="taskCards[index].description" type="text"></textarea>
+        <button (click)="toggleTaskCard()">
+            <fa-icon [icon]="done"></fa-icon>
+        </button>
+    </div>
+</ng-template>

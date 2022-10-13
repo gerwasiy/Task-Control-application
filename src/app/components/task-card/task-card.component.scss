@@ -1,0 +1,81 @@
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  background-color: rgb(39, 40, 43);
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  min-height: 100px;
+  position: relative;
+ 
+  .card-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    max-width: 250px;
+  }
+  .card-title {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1rem;
+    .index{
+      color:  rgb(98 101 109);
+      font-size: 0.75rem;
+    }
+    
+  }
+  .card-description{
+    text-transform: lowercase;
+    font-weight: 300;
+    font-size: 0.8rem;
+    max-width: 95%;
+    max-height: max-content;
+    word-wrap: break-word;
+    margin: 10px 0px;
+  }
+  .card-creation-date{
+    font-size: 0.75rem;
+  }
+ aside{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ }
+    button {
+      font-size: 1.25rem;
+    }
+  
+}
+.task-card-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(39, 40, 43);
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  button {
+    font-size: 2rem;
+  }
+
+  textarea,
+  input {
+    background-color: inherit;
+    font-size: 1.25rem;
+    border: 1px solid #1c1d1f; ;
+    border-radius: 5px;
+    outline: none;
+    color: whitesmoke;
+    padding: 5px;
+    max-width: 95%;
+    min-width: 95%;
+    min-height: 1.5rem;
+    &:focus {
+      
+      border: 1.5px solid #6499ff;
+    }
+  }
+}

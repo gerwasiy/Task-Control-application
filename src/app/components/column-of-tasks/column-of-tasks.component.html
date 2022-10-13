@@ -1,0 +1,17 @@
+<div class="column-of-tasks">
+    <div class="column-of-tasks-header">
+        <div class="column-icon">
+            <fa-icon [icon]="columnOfTasks?.icon"></fa-icon>
+        </div>
+        <h2>{{columnOfTasks?.title}}</h2>
+        <p>{{taskCards.length}}</p>
+        <button (click)="createTaskCard()" ><fa-icon [icon]="addTaskCard"></fa-icon></button>
+    </div>
+    <div class="tasks">
+        <app-task-card [taskCards]="taskCards" *ngFor="let card of taskCards; let idx = index"
+        [index]="idx"
+        
+        > </app-task-card>
+        
+    </div>
+</div>
