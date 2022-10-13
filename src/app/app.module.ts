@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TaskCard } from './components/task-card/task-card.component';
 import { ColumnOfTasks } from './components/column-of-tasks/column-of-tasks.component';
 import { BoardComponent } from './components/board/board.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -23,7 +24,8 @@ import { BoardComponent } from './components/board/board.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
