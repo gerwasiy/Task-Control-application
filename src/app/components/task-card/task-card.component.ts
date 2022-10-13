@@ -1,6 +1,6 @@
 
 import { Component, OnInit, Input } from '@angular/core';
-import { taskCard } from 'src/app/models/task-card';
+import { TaskCardModel } from 'src/app/models/task-card';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import {faSquareCheck} from '@fortawesome/free-solid-svg-icons'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
@@ -16,7 +16,7 @@ export class TaskCard implements OnInit {
   deleteBtn = faTrash
   done = faSquareCheck
 
-  @Input() taskCards: taskCard[] = []
+  @Input() taskCards: TaskCardModel[] = []
   @Input() index!:number
 
   toggle = true
