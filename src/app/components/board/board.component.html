@@ -1,1 +1,25 @@
-<app-column-of-tasks></app-column-of-tasks>
+<div *ngIf="toggle; else board" class="board-card">
+    <div class="main">
+        <h2> <span class="uniqId">#{{index}} </span>{{boards[index].title}}</h2>
+        <p class="description">{{boards[index].description}}</p>
+        <span>{{boards[index].creationData | date:'medium'}}</span>
+    </div>
+    <aside>
+        <button (click)="toggleBoard()">
+            <fa-icon [icon]="editBtn"></fa-icon>
+        </button>
+        <button>
+            <fa-icon (click)="deleteBoard()" [icon]="deleteBtn"></fa-icon>
+        </button>
+    </aside>
+</div>
+
+<ng-template #board>
+    <div class="board-card-editor">
+        <input [(ngModel)]="boards[index].title" type="text" />
+        <textarea [(ngModel)]="boards[index].description" disabled="disabled" type="text"></textarea>
+        <button (click)="toggleBoard()">
+            <fa-icon [icon]="done"></fa-icon>
+        </button>
+    </div>
+</ng-template>
