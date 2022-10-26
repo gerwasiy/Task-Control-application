@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ColumnOfTasks } from './column-of-tasks.component';
+import { ColumnOfTasksComponent } from './column-of-tasks.component';
 
 describe('ColumnOfTasks', () => {
-  let component: ColumnOfTasks;
-  let fixture: ComponentFixture<ColumnOfTasks>;
+  let component: ColumnOfTasksComponent;
+  let fixture: ComponentFixture<ColumnOfTasksComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ColumnOfTasks ]
+      declarations: [ ColumnOfTasksComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ColumnOfTasks);
+    fixture = TestBed.createComponent(ColumnOfTasksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

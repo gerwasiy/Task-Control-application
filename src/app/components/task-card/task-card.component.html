@@ -1,6 +1,6 @@
-<div *ngIf="toggle; else editTaskCard" class="task-card">
+<div routerLink="/details" routerLinkActive="active" ariaCurrentWhenActive="page" *ngIf="toggle; else editTaskCard" class="task-card">
     <div class="card-info">
-        <h3 class="card-title"> <span class="index">#{{index}}</span>  {{taskCards[index].title}} </h3>
+        <h3 class="card-title"> <span class="uniqId">#{{index}}</span>  {{taskCards[index].title}} </h3>
         <p class="card-description">{{taskCards[index].description}} </p>
         <span #inputDate  class="card-creation-date">{{taskCards[index].creationData | date:'medium'}}</span>
     </div>
@@ -14,6 +14,7 @@
     </aside>
 
 </div>
+
 <ng-template #editTaskCard>
     <div class="task-card-editor">
         <input [(ngModel)]="taskCards[index].title" type="text"/>

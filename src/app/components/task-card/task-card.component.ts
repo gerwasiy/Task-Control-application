@@ -10,7 +10,7 @@ import {faTrash} from '@fortawesome/free-solid-svg-icons'
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.scss'],
 })
-export class TaskCard implements OnInit {
+export class TaskCardComponent implements OnInit {
 
   editBtn = faPenToSquare
   deleteBtn = faTrash

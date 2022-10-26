@@ -1,11 +1,12 @@
 <div class="board">
-    <div class="column-of-tasks">
+    <div [style.background]="colorToDo" class="column-of-tasks">
         <div class="column-of-tasks-header">
             <div class="column-icon">
                 <fa-icon [icon]="columnsOfTasks[0].icon"></fa-icon>
             </div>
             <h2>{{columnsOfTasks[0].title}}</h2>
             <p>{{taskCardsToDo.length}}</p>
+            <input class="color-picker"  [(colorPicker)]="colorToDo" [style.background]="colorToDo"/>
             <button (click)="createTaskCardInToDo()">
                 <fa-icon [icon]="addTaskCard"></fa-icon>
             </button>
@@ -15,15 +16,17 @@
             <app-task-card [taskCards]="taskCardsToDo" cdkDrag *ngFor="let card of taskCardsToDo; let idx = index"
                 [index]="idx">
             </app-task-card>
+        
         </div>
     </div>
-    <div class="column-of-tasks">
+    <div [style.background]="colorProgress" class="column-of-tasks">
         <div class="column-of-tasks-header">
             <div class="column-icon">
                 <fa-icon [icon]="columnsOfTasks[1].icon"></fa-icon>
             </div>
             <h2>{{columnsOfTasks[1].title}}</h2>
             <p>{{taskCardsInProgress.length}}</p>
+            <input class="color-picker"  [(colorPicker)]="colorProgress" [style.background]="colorProgress"/>
             <button (click)="createTaskCardInProgress()">
                 <fa-icon [icon]="addTaskCard"></fa-icon>
             </button>
@@ -35,13 +38,14 @@
                 *ngFor="let card of taskCardsInProgress; let idx = index" [index]="idx"> </app-task-card>
         </div>
     </div>
-    <div class="column-of-tasks">
+    <div [style.background]="colorReady" class="column-of-tasks">
         <div class="column-of-tasks-header">
             <div class="column-icon">
                 <fa-icon [icon]="columnsOfTasks[2].icon"></fa-icon>
             </div>
             <h2>{{columnsOfTasks[2].title}}</h2>
             <p>{{taskCardsInReady.length}}</p>
+            <input class="color-picker"  [(colorPicker)]="colorReady" [style.background]="colorReady"/>
             <button (click)="createTaskCardInReady()">
                 <fa-icon [icon]="addTaskCard"></fa-icon>
             </button>

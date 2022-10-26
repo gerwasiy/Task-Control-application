@@ -17,7 +17,11 @@ import { TaskCardModel } from 'src/app/models/task-card';
   templateUrl: './column-of-tasks.component.html',
   styleUrls: ['./column-of-tasks.component.scss'],
 })
-export class ColumnOfTasks implements OnInit {
+export class ColumnOfTasksComponent implements OnInit {
+
+  colorToDo:string = ' #1c1d1f'
+  colorProgress:string =' #1c1d1f'
+  colorReady:string =' #1c1d1f'
 
   drop(event: CdkDragDrop<TaskCardModel[]>) {
     if (event.previousContainer === event.container) {
@@ -65,20 +69,26 @@ export class ColumnOfTasks implements OnInit {
   taskCardsInProgress: TaskCardModel[] = [];
   taskCardsInReady: TaskCardModel[] = [];
 
-  taskCardTemplate:TaskCardModel = {
-    title: 'Issue Title',
-    description: 'description',
-    creationData: new Date(),
-  }
-
   createTaskCardInToDo() {
-    this.taskCardsToDo.push(this.taskCardTemplate);
+    this.taskCardsToDo.push({
+      title: 'Issue Title',
+      description: 'description',
+      creationData: new Date(),
+    });
   }
   createTaskCardInProgress() {
-    this.taskCardsInProgress.push(this.taskCardTemplate);
+    this.taskCardsInProgress.push({
+      title: 'Issue Title',
+      description: 'description',
+      creationData: new Date(),
+    });
   }
   createTaskCardInReady() {
-    this.taskCardsInReady.push(this.taskCardTemplate);
+    this.taskCardsInReady.push({
+      title: 'Issue Title',
+      description: 'description',
+      creationData: new Date(),
+    });
   }
 
   constructor() {}
