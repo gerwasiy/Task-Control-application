@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -13,7 +13,6 @@ import { ColumnOfTasksComponent } from './components/column-of-tasks/column-of-t
 import { BoardDetailsPageComponent } from './components/board-details-page/board-details-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BoardComponent } from './components/board/board.component';
-
 
 
 @NgModule({
@@ -31,8 +30,9 @@ import { BoardComponent } from './components/board/board.component';
     FontAwesomeModule,
     FormsModule,
     DragDropModule,
-    ColorPickerModule
-
+    ColorPickerModule,
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

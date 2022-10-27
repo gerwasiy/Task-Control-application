@@ -1,6 +1,6 @@
-<div *ngIf="toggle; else board" class="board-card">
+<div routerLink="board-page" routerLinkActive="active" ariaCurrentWhenActive="page" *ngIf="toggle; else board" class="board-card">
     <div class="main">
-        <h2> <span class="uniqId">#{{index}} </span>{{boards[index].title}}</h2>
+        <h2> <span class="uniqId">#{{index}}</span> {{boards[index].title}}</h2>
         <p class="description">{{boards[index].description}}</p>
         <span>{{boards[index].creationData | date:'medium'}}</span>
     </div>

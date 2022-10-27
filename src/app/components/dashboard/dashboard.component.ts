@@ -1,8 +1,6 @@
-import { ColumnOfTasksComponent } from './../column-of-tasks/column-of-tasks.component';
 
-import { Routes } from '@angular/router';
 import { BoardData } from './../../models/board-data';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faPlusCircle, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -11,8 +9,6 @@ import { faPlusCircle, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
-@Input() routes:Routes = []
 
   boards: BoardData[] = [];
   done = faSquareCheck;

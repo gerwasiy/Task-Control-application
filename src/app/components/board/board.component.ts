@@ -2,6 +2,7 @@ import { BoardData } from './../../models/board-data';
 import { Component, Input, OnInit } from '@angular/core';
 import { faArrowCircleLeft, faPenToSquare, faSquareCheck, faTrash } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -10,7 +11,7 @@ import { faArrowCircleLeft, faPenToSquare, faSquareCheck, faTrash } from '@forta
 export class BoardComponent implements OnInit {
 
 @Input() index!:number
-@Input() boards:BoardData[] =[]
+@Input() boards!:BoardData[]
 
 editBtn = faPenToSquare
 deleteBtn = faTrash
@@ -25,9 +26,11 @@ back = faArrowCircleLeft
     this.boards.splice( this.index,1)
   }
 
-  constructor() { }
+  constructor(
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+  
   }
 
 }

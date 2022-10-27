@@ -1,4 +1,4 @@
-<div routerLink="/details" routerLinkActive="active" ariaCurrentWhenActive="page" *ngIf="toggle; else editTaskCard" class="task-card">
+<div *ngIf="toggle; else editTaskCard" class="task-card">
     <div class="card-info">
         <h3 class="card-title"> <span class="uniqId">#{{index}}</span>  {{taskCards[index].title}} </h3>
         <p class="card-description">{{taskCards[index].description}} </p>

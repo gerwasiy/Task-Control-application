@@ -1,6 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { faXmarkSquare } from '@fortawesome/free-solid-svg-icons';
-import { TaskCardModel } from 'src/app/models/task-card';
+import { Component, Input, OnInit, Inject } from '@angular/core';
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import { BoardData } from 'src/app/models/board-data';
+
+export interface DialogData {
+  animal: 'panda' | 'unicorn' | 'lion';
+}
+
 @Component({
   selector: 'app-board-details-page',
   templateUrl: './board-details-page.component.html',
@@ -8,14 +13,9 @@ import { TaskCardModel } from 'src/app/models/task-card';
 })
 export class BoardDetailsPageComponent implements OnInit {
 
-  exit = faXmarkSquare
+  exit = faArrowLeftLong
 
-
-  @Input() taskCards: TaskCardModel[] = []
-  @Input() index!:number
-
-  
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
