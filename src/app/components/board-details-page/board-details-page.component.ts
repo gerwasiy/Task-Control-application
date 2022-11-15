@@ -18,8 +18,7 @@ export class BoardDetailsPageComponent implements OnInit {
   
   constructor(
     private boardsService: BoardsService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
