@@ -11,48 +11,10 @@
             </button>
         </div>
         <div class="tasks" cdkDropList #todoList="cdkDropList" [cdkDropListData]="taskCardsToDo"
-             (cdkDropListDropped)="drop($event)">
+           (cdkDropListDropped)="drop($event)">
             <app-task-card [taskCard]="card" [index]="idx" [taskCards]="taskCardsToDo" cdkDrag *ngFor="let card of taskCardsToDo; let idx = index">
             </app-task-card>
-            <!-- [cdkDropListConnectedTo]="[progressList,readyList]" -->
+            <!-- [cdkDropListConnectedTo]="[progressList,readyList]"  -->
         </div>
     </div>
-    <!-- <div class="column-of-tasks">
-        <div class="column-of-tasks-header">
-            <div class="column-icon">
-                <fa-icon [icon]="columnsOfTasks[1].icon"></fa-icon>
-            </div>
-            <h2>{{columnsOfTasks[1].title}}</h2>
-            <p>{{taskCardsInProgress.length}}</p>
-          
-            <button (click)="createTaskCardInProgress()">
-                <fa-icon [icon]="addTaskCard"></fa-icon>
-            </button>
-        </div>
-        <div class="tasks" cdkDropList #progressList="cdkDropList" [cdkDropListData]="taskCardsInProgress"
-            [cdkDropListConnectedTo]="[todoList,readyList]" (cdkDropListDropped)="drop($event)" cdkDropList
-            [cdkDropListData]="taskCardsInProgress">
-            <app-task-card [taskCards]="taskCardsInProgress" cdkDrag
-                *ngFor="let card of taskCardsInProgress; let idx = index" [index]="idx"> </app-task-card>
-        </div>
-    </div>
-    <div  class="column-of-tasks">
-        <div class="column-of-tasks-header">
-            <div class="column-icon">
-                <fa-icon [icon]="columnsOfTasks[2].icon"></fa-icon>
-            </div>
-            <h2>{{columnsOfTasks[2].title}}</h2>
-            <p>{{taskCardsReady.length}}</p>
-       
-            <button (click)="createTaskCardInReady()">
-                <fa-icon [icon]="addTaskCard"></fa-icon>
-            </button>
-        </div>
-        <div class="tasks" cdkDropList #readyList="cdkDropList" [cdkDropListData]="taskCardsReady"
-            [cdkDropListConnectedTo]="[todoList,progressList]" (cdkDropListDropped)="drop($event)" cdkDropList
-            [cdkDropListData]="taskCardsReady">
-            <app-task-card [taskCards]="taskCardsReady" cdkDrag *ngFor="let card of taskCardsReady; let idx = index"
-                [index]="idx"></app-task-card>
-        </div>
-    </div> -->
 </div>

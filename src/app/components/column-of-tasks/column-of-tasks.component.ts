@@ -6,11 +6,8 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
 
-import { columnOfTasksModel } from 'src/app/models/columnOfTasks';
+
 import { TaskCardModel } from 'src/app/models/taskCard';
 import { TaskCardService } from 'src/app/services/task-card.service';
 
@@ -21,7 +18,7 @@ import { TaskCardService } from 'src/app/services/task-card.service';
 })
 export class ColumnOfTasksComponent implements OnInit {
 
-  columnOfTasks: columnOfTasksModel[] =[]
+
   @Input() board!: BoardModel;
 
   addTaskCard = faPlus;
@@ -74,23 +71,4 @@ export class ColumnOfTasksComponent implements OnInit {
       );
     }
   }
-
-  createTaskCardInToDo() {
-    this.taskCardsToDo.push(this.taskCard);
-  }
-  createTaskCardInProgress() {
-    this.taskCardsInProgress.push({
-      title: 'Issue Title',
-      description: 'description',
-      creationDate: new Date(),
-    });
-  }
-  createTaskCardInReady() {
-    this.taskCardsReady.push({
-      title: 'Issue Title',
-      description: 'description',
-      creationDate: new Date(),
-    });
-  }
-  
 }
