@@ -1,22 +1,25 @@
 <div class="dashboard">
     <div class="boards">
-    <div *ngIf="toggle; else board" class="board-card">
+    <div *ngIf="toggle; else boardCard" class="board-card">
         <button (click)="toggleBoard()">
             <fa-icon [icon]="addBoard"></fa-icon>
         </button>
         <p>Add new board</p>
+        
     </div>
     
-        <app-board [boards]="boards" *ngFor="let board of boards; let idx = index" [index]="idx">
+        <app-board [board]="board" *ngFor="let board of boards">
         </app-board>
     </div>
-    <ng-template class="board-card-creating" #board>
-        <div class="task-card-editor">
-            <input placeholder="name" [(ngModel)]="boardTitle" type="text" />
-            <textarea placeholder="description" [(ngModel)]="boardDescription" type="text"></textarea>
-            <button (click)="createBoard()">
-                done
+    <ng-template class="board-card-creating" #boardCard>
+        <div class="board-card-editor">
+            <input placeholder="name" [(ngModel)]="boardIn.title" type="text" />
+            <textarea placeholder="description" [(ngModel)]="boardIn.description" type="text"></textarea>
+          
+            <button (click)="generateBoard(boardIn)">
+                <fa-icon [icon]="doneMark"></fa-icon>
             </button>
         </div>
+     
     </ng-template>
 </div>

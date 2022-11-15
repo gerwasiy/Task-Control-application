@@ -13,7 +13,7 @@ import { ColumnOfTasksComponent } from './components/column-of-tasks/column-of-t
 import { BoardDetailsPageComponent } from './components/board-details-page/board-details-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BoardComponent } from './components/board/board.component';
-
+import { HttpClientModule }   from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { BoardComponent } from './components/board/board.component';
     DragDropModule,
     ColorPickerModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

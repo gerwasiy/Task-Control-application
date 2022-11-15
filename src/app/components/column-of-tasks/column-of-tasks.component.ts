@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BoardModel } from 'src/app/models/board';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -9,8 +10,9 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
 
-import { columnOfTasks } from 'src/app/models/column-of-tasks';
-import { TaskCardModel } from 'src/app/models/task-card';
+import { columnOfTasksModel } from 'src/app/models/columnOfTasks';
+import { TaskCardModel } from 'src/app/models/taskCard';
+import { TaskCardService } from 'src/app/services/task-card.service';
 
 @Component({
   selector: 'app-column-of-tasks',
@@ -19,9 +21,42 @@ import { TaskCardModel } from 'src/app/models/task-card';
 })
 export class ColumnOfTasksComponent implements OnInit {
 
-  colorToDo:string = ' #1c1d1f'
-  colorProgress:string =' #1c1d1f'
-  colorReady:string =' #1c1d1f'
+  columnOfTasks: columnOfTasksModel[] =[]
+  @Input() board!: BoardModel;
+
+  addTaskCard = faPlus;
+
+  taskCardsToDo: TaskCardModel[] = [];
+  taskCard!: TaskCardModel
+  taskCardIn: TaskCardModel = {
+    title: 'Issue Title',
+    description: 'description',
+    creationDate: new Date()
+  };
+
+  constructor(private taskCardService: TaskCardService) {}
+
+  ngOnInit(): void {
+    this.taskCardService
+      .getCards()
+      .subscribe((response) => (this.taskCardsToDo = response));
+  }
+
+  taskCardsInProgress: TaskCardModel[] = [];
+  taskCardsReady: TaskCardModel[] = [];
+
+  generateCard(card: TaskCardModel) {
+    this.taskCardService.createCard(card).subscribe({
+      next: (data: any) => {
+        card = data;
+      },
+      error: (error) => console.log(error),
+    });
+    this.taskCardsToDo.push(card)
+    this.taskCardService
+  }
+
+  toggle = true;
 
   drop(event: CdkDragDrop<TaskCardModel[]>) {
     if (event.previousContainer === event.container) {
@@ -40,58 +75,22 @@ export class ColumnOfTasksComponent implements OnInit {
     }
   }
 
-  addTaskCard = faPlus;
-
-  @Input() columnOfTasks?: columnOfTasks;
-
-  progressOfTasks = {
-    toDo: faCircleExclamation,
-    inProgress: faCircleHalfStroke,
-    ready: faCircle,
-  };
-
-  columnsOfTasks: columnOfTasks[] = [
-    {
-      icon: this.progressOfTasks.toDo,
-      title: 'To do',
-    },
-    {
-      icon: this.progressOfTasks.inProgress,
-      title: 'In progress',
-    },
-    {
-      icon: this.progressOfTasks.ready,
-      title: 'Ready',
-    },
-  ];
-
-  taskCardsToDo: TaskCardModel[] = [];
-  taskCardsInProgress: TaskCardModel[] = [];
-  taskCardsInReady: TaskCardModel[] = [];
-
   createTaskCardInToDo() {
-    this.taskCardsToDo.push({
-      title: 'Issue Title',
-      description: 'description',
-      creationData: new Date(),
-    });
+    this.taskCardsToDo.push(this.taskCard);
   }
   createTaskCardInProgress() {
     this.taskCardsInProgress.push({
       title: 'Issue Title',
       description: 'description',
-      creationData: new Date(),
+      creationDate: new Date(),
     });
   }
   createTaskCardInReady() {
-    this.taskCardsInReady.push({
+    this.taskCardsReady.push({
       title: 'Issue Title',
       description: 'description',
-      creationData: new Date(),
+      creationDate: new Date(),
     });
   }
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  
 }

@@ -1,5 +1,5 @@
-
-import { BoardData } from './../../models/board-data';
+import { BoardsService } from './../../services/boards.service';
+import { BoardModel } from '../../models/board';
 import { Component, OnInit } from '@angular/core';
 import { faPlusCircle, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,29 +9,43 @@ import { faPlusCircle, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
-  boards: BoardData[] = [];
-  done = faSquareCheck;
+  doneMark = faSquareCheck;
   addBoard = faPlusCircle;
   toggle = true;
-  i: number = 0;
-  boardTitle = this.boards[this.i]?.title;
-  boardDescription = this.boards[this.i]?.description;
+
+  boards: BoardModel[] = [];
+  board!: BoardModel;
+  boardIn: BoardModel = {
+    title: '',
+    description: '',
+    creationDate: new Date(),
+    taskCards: {
+      ToDo: [],
+      InProgress: [],
+      Ready: [],
+    },
+  };
+
+  constructor(private boardsService: BoardsService) {}
+
+  ngOnInit(): void {
+    this.boardsService
+      .getBoards()
+      .subscribe((response) => (this.boards = response));
+  }
 
   toggleBoard() {
     this.toggle = !this.toggle;
   }
 
-  createBoard() {
-    this.toggle = !this.toggle;
-    this.boards.push({
-      title: this.boardTitle,
-      description: this.boardDescription,
-      creationData: new Date(),
+  generateBoard(board: BoardModel) {
+    this.boardsService.createBoard(board).subscribe({
+      next: (data: any) => {
+        board = data;
+      },
+      error: (error) => console.log(error),
     });
-    this.i++
+    location.reload();
+    this.toggle = !this.toggle;
   }
-  constructor() {}
-
-  ngOnInit(): void {}
 }

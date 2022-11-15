@@ -1,7 +1,6 @@
 export interface TaskCardModel{
    title:string
    description:string
-   creationData:Date
+   creationDate:Date
    id?:number
-
 }

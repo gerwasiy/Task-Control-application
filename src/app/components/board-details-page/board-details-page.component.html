@@ -1,10 +1,17 @@
 <div class="board-details-page">
     <div class="details-header">
-        <a class="exit-btn" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">
-            <fa-icon [icon]="exit"></fa-icon>
-        </a>
-        <h1>boards[index].title </h1>
-
+        <div class="left">
+            <a class="exit-btn" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <fa-icon [icon]="exit"></fa-icon>
+            </a>
+            <div class="title-box"> <span class="uniqId">#{{board.id}}</span>
+                <h2>{{board.title}}</h2>
+            </div>
+        </div>
+        <div class="right">
+            <p class="desc">{{board.description}}</p>
+            <p class="date">{{board.creationDate | date:'medium' }}</p>
+        </div>
     </div>
-    <app-column-of-tasks></app-column-of-tasks>
+    <app-column-of-tasks [board]="board" ></app-column-of-tasks>
 </div>

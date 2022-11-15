@@ -10,7 +10,17 @@
   flex-direction: row;
   justify-content: space-between;
   color: whitesmoke;
+  .title-box{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+ h2{
   cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+ }
   .main {
     display: flex;
     flex-direction: column;

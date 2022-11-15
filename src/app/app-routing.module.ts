@@ -10,7 +10,7 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'board-page',
+    path: 'boards/:id',
     component: BoardDetailsPageComponent,
   },
 ];

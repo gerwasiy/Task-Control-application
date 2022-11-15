@@ -1,8 +1,10 @@
-<div routerLink="board-page" routerLinkActive="active" ariaCurrentWhenActive="page" *ngIf="toggle; else board" class="board-card">
+<div *ngIf="toggle; else boardCard" class="board-card">
     <div class="main">
-        <h2> <span class="uniqId">#{{index}}</span> {{boards[index].title}}</h2>
-        <p class="description">{{boards[index].description}}</p>
-        <span>{{boards[index].creationData | date:'medium'}}</span>
+        <div class="title-box"> <span class="uniqId">#{{board.id}}</span>
+            <h2 [routerLink]="['/boards',board.id]">{{board.title}}</h2>
+        </div>
+        <p class="description">{{board.description}}</p>
+        <span>{{board.creationDate | date:'medium'}}</span>
     </div>
     <aside>
         <button (click)="toggleBoard()">
@@ -14,11 +16,11 @@
     </aside>
 </div>
 
-<ng-template #board>
+<ng-template #boardCard>
     <div class="board-card-editor">
-        <input [(ngModel)]="boards[index].title" type="text" />
-        <textarea [(ngModel)]="boards[index].description" disabled="disabled" type="text"></textarea>
-        <button (click)="toggleBoard()">
+        <input [(ngModel)]="boardIn.title" type="text" />
+        <textarea disabled="disabled" type="text"></textarea>
+        <button (click)="toEditBoard(boardIn)">
             <fa-icon [icon]="done"></fa-icon>
         </button>
     </div>

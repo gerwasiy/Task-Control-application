@@ -1,10 +1,11 @@
 .dashboard{
   display: flex;
   flex-direction: row;
+  justify-content: stretch;
 }
-.board-card, .task-card-editor{
+.board-card, .board-card-editor{
     background-color: rgb(41 42 53);
-    width: 250px;
+    min-width: 250px;
     height: 150px;
     margin: 10px;
     border: 1px solid rgb(80 80 100);

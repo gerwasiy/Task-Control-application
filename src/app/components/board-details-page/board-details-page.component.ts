@@ -1,23 +1,33 @@
-import { Component, Input, OnInit, Inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
-import { BoardData } from 'src/app/models/board-data';
+import { firstValueFrom } from 'rxjs';
+import { BoardModel } from 'src/app/models/board';
+import { BoardsService } from 'src/app/services/boards.service';
 
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
 
 @Component({
   selector: 'app-board-details-page',
   templateUrl: './board-details-page.component.html',
-  styleUrls: ['./board-details-page.component.scss']
+  styleUrls: ['./board-details-page.component.scss'],
 })
 export class BoardDetailsPageComponent implements OnInit {
 
-  exit = faArrowLeftLong
+  exit = faArrowLeftLong;
+  board!:BoardModel
+  
+  constructor(
+    private boardsService: BoardsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  constructor() {}
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.activatedRoute.paramMap.subscribe(async () => {
+      let boardId = this.activatedRoute.snapshot.paramMap.get('id');
+      if (boardId !== null) {
+        this.board = await firstValueFrom(this.boardsService.getBoard(+boardId));
+      }
+    });
   }
-
 }
